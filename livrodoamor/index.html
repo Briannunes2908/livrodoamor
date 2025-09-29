@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Livro Interativo — Rosa & Dourado</title>
+
+  <!-- Fontes elegantes -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:wght@300;400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Tela inicial -->
+  <div class="start" id="start">
+    <div class="start-card">
+      <h1 class="logo">Leia quando estiver...</h1>
+      <button class="btn" id="btnStart" aria-label="Iniciar a leitura">Abrir livro</button>
+    </div>
+  </div>
+
+  <main class="stage">
+    <div class="book-shell" id="bookShell" aria-live="polite">
+      <div class="book-wrap" aria-label="Livro interativo">
+        <!-- Capa (visível por trás) -->
+        <div class="book">
+          <section class="cover right" aria-hidden="true">
+            <div class="cover-skin"></div>
+            <div class="cover-edge"></div>
+            <div class="cover title">
+              <h1>Leia quando estiver...</h1>
+              <p class="subtitle">Um livro para te abraçar em qualquer momento</p>
+            </div>
+          </section>
+          <section class="cover left" aria-hidden="true">
+            <div class="cover-skin"></div>
+            <div class="cover-edge cover-edge-left"></div>
+          </section>
+
+          <!-- Pilhas (esquerda/direita) -->
+          <div class="pages-left" id="pagesLeft" aria-label="Página esquerda"></div>
+          <div class="pages" id="pagesRight" aria-label="Página direita"></div>
+        </div>
+
+        <!-- Zonas clicáveis (mobile/desktop) -->
+        <div class="tapzone left" id="tapPrev" aria-label="Página anterior"></div>
+        <div class="tapzone right" id="tapNext" aria-label="Próxima página"></div>
+
+        <!-- Setas sobrepostas -->
+        <button class="nav-btn left" id="prev" aria-label="Página anterior" title="Anterior (←)">❮</button>
+        <button class="nav-btn right" id="next" aria-label="Próxima página" title="Próxima (→)">❯</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Conteúdo bruto: 31 páginas. O Sumário é gerado automaticamente como a página 0. -->
+  <div id="livro-textos" style="display:none">
+    <!-- 1 -->
+    <div>
+      <h2> Leia quando você estiver triste</h2>
+      <p>Amor, eu sei que a tristeza às vezes chega sem pedir licença, ocupando espaços no coração que deveriam ser só de alegria. Mas eu quero que você saiba que não precisa carregar esse peso sozinha. Eu tô aqui, sempre. Se eu pudesse, eu tiraria cada lágrima dos seus olhos e guardaria pra mim, só pra não ver você sofrer. Mas já que não posso, eu prometo que vou estar ao seu lado em cada choro, em cada suspiro, em cada silêncio. Você não precisa sorrir agora, nem se forçar a estar bem. Só deixa eu te abraçar em pensamento e te lembrar: eu te amo.</p>
+    </div>
+    <!-- 2 -->
+    <div>
+      <h2> Leia quando você estiver feliz</h2>
+      <p>Ah, meu amor, como é lindo ver você feliz. Sua risada ilumina mais que qualquer sol, e seu sorriso é meu abrigo. Eu quero que você saiba que sua felicidade é também a minha. Quando você estiver assim, aproveite, se entregue a cada instante, dance sem medo, ria alto. E saiba que, de onde eu estiver, vou estar sorrindo junto com você, porque ver você feliz é o meu maior presente.</p>
+    </div>
+    <!-- 3 -->
+    <div>
+      <h2> Leia quando você estiver com medo</h2>
+      <p>Amor, eu sei que o medo pode ser cruel, que às vezes ele cresce tanto que parece maior que tudo. Mas eu quero que você se lembre de algo: você nunca vai estar sozinha. Pode se esconder no meu peito, pode tremer nos meus braços, pode chorar sem vergonha. Eu vou ser a coragem que te falta, vou ser o porto seguro quando o mundo parecer assustador. E não importa o que aconteça, o meu amor sempre vai ser mais forte que qualquer medo.</p>
+    </div>
+    <!-- 4 -->
+    <div>
+      <h2>Leia quando você estiver com raiva</h2>
+      <p>Eu sei que a raiva aperta, que às vezes o coração parece em chamas e nada faz sentido. Mas lembra, meu bem: você não precisa guardar isso dentro de você. Pode falar, pode gritar, pode desabafar comigo. Eu vou ouvir cada palavra, vou segurar sua mão mesmo quando o fogo estiver queimando. Porque eu sei que, depois da tempestade, a calmaria vem. E eu quero ser essa calmaria pra você.</p>
+    </div>
+    <!-- 5 -->
+    <div>
+      <h2> Leia quando você estiver insegura</h2>
+      <p>Meu amor, eu sei que às vezes o espelho não mostra a beleza que eu vejo em você, e que a mente insiste em sussurrar dúvidas. Mas por favor, acredite em mim: você é maravilhosa. Você é inteira, única, especial de um jeito que ninguém mais é. Eu te amo exatamente como você é, com todas as suas cores, jeitos, medos e sonhos. Você não precisa mudar nada pra ser suficiente, porque pra mim, você já é tudo.</p>
+    </div>
+    <!-- 6 -->
+    <div>
+      <h2> Leia quando você estiver cansada</h2>
+      <p>Meu bem, eu sei que você se doa tanto, que às vezes o mundo pesa nos seus ombros. Mas você não precisa ser forte o tempo todo. Deita, fecha os olhos, respira. Imagina que eu tô aqui, passando a mão no seu cabelo, dizendo baixinho que tá tudo bem descansar. Você merece pausas, merece cuidar de você com o mesmo carinho que cuida dos outros. Eu vou estar aqui quando você acordar, com o mesmo amor de sempre.</p>
+    </div>
+    <!-- 7 -->
+    <div>
+      <h2> Leia quando sentir saudade de mim</h2>
+      <p>Eu sei que a saudade machuca, que às vezes parece até um buraco dentro do peito. Mas lembra: ela existe porque nosso amor é real, porque o que temos é forte demais pra caber só nos dias em que estamos juntos. Fecha os olhos, amor, e sente: eu tô te abraçando agora, mesmo de longe. Nosso coração bate no mesmo ritmo, mesmo que separados. E logo, logo, a saudade vira reencontro.</p>
+    </div>
+    <!-- 8 -->
+    <div>
+      <h2>Leia quando você duvidar de nós</h2>
+      <p>Amor, eu sei que às vezes o mundo lá fora parece querer nos provar. Mas eu quero que você lembre de uma coisa: eu tô aqui porque eu escolhi você. Eu acredito em nós. Não importa quantos obstáculos apareçam, não importa o que digam — eu sei o que sinto, e sei o que somos. E isso é maior que qualquer dúvida.</p>
+    </div>
+    <!-- 9 -->
+    <div>
+      <h2> Leia quando você estiver rindo sozinha</h2>
+      <p>Se você estiver rindo sozinha, amor, provavelmente eu pensei em você nesse mesmo instante. Que coisa linda é imaginar que o seu sorriso existe mesmo quando eu não tô por perto. Continue rindo, continue sendo essa luz. Sua felicidade é meu lugar favorito no mundo.</p>
+    </div>
+    <!-- 10 -->
+    <div>
+      <h2>Leia quando você sentir que ninguém entende você</h2>
+      <p>Meu amor, eu entendo. Talvez não tudo, talvez não de forma perfeita, mas eu sempre vou tentar mergulhar no seu mundo e te enxergar de verdade. Você não precisa se esconder comigo. Pode mostrar suas fragilidades, seus silêncios, seus medos. Eu amo cada pedacinho de você, até aqueles que você acha que ninguém vai entender.</p>
+    </div>
+    <!-- 11 -->
+    <div>
+      <h2>Leia quando você achar que não é suficiente</h2>
+      <p>Amor, você é mais do que suficiente. Você é um universo inteiro dentro de uma única pessoa. Eu sei que o mundo faz a gente acreditar que precisamos ser mais, fazer mais, mostrar mais. Mas eu te digo, com toda a certeza: eu te amo do jeitinho que você é. Você é minha melhor escolha, sempre.</p>
+    </div>
+    <!-- 12 -->
+    <div>
+      <h2> Leia quando você conquistar algo importante</h2>
+      <p>Parabéns, meu amor! Eu sempre soube que você conseguiria. Você é dedicada, forte, brilhante. Cada conquista sua é como se fosse minha também, porque eu vibro junto, celebro junto, me orgulho junto. Nunca duvide da sua capacidade, porque você é capaz de tudo.</p>
+    </div>
+    <!-- 13 -->
+    <div>
+      <h2> Leia quando você chorar sem motivo</h2>
+      <p>Amor, tá tudo bem chorar. Você não precisa de uma explicação pra sentir. Às vezes o coração só quer aliviar, e isso é humano. Se eu pudesse, eu seguraria cada lágrima sua e transformaria em flores. Mas já que não posso, quero apenas te lembrar: eu tô aqui, sempre, pra segurar você até quando não houver palavras.</p>
+    </div>
+    <!-- 14 -->
+    <div>
+      <h2> Leia quando você estiver ansiosa</h2>
+      <p>Respira, meu bem. Respira devagar. Eu sei que sua mente corre rápido, que os pensamentos se atropelam e o coração dispara. Mas eu quero que você sinta meu abraço agora. Fecha os olhos, imagina eu te dizendo: “calma, amor, tá tudo bem.” Não precisa controlar tudo. Eu tô aqui, e vou caminhar com você passo a passo.</p>
+    </div>
+    <!-- 15 -->
+    <div>
+      <h2> Leia quando você acordar sem vontade de levantar da cama</h2>
+      <p>Meu amor, eu sei que tem dias em que tudo parece pesado demais. Mas não se cobre tanto. Se o mundo pedir demais, dê o que conseguir. E se não der, tudo bem também. Você não precisa ser perfeita, você não precisa dar conta de tudo. Só de existir, você já é maravilhosa. E eu vou amar você do mesmo jeito, em todos os dias, em todas as fases.</p>
+    </div>
+    <!-- 16 -->
+    <div>
+      <h2> Leia quando você sentir que está no escuro</h2>
+      <p>Amor, eu quero ser sua luz. Não importa quão escura pareça a estrada, eu vou iluminar o caminho com meu amor. Você nunca vai andar sozinha, mesmo nos lugares mais sombrios. Segura minha mão, confia em mim: juntos, a gente vence qualquer noite.</p>
+    </div>
+    <!-- 17 -->
+    <div>
+      <h2> Leia quando você estiver orgulhosa de si mesma</h2>
+      <p>Meu bem, que coisa linda é te ver orgulhosa! Eu sempre soube que você conseguiria, porque eu conheço a força que você carrega. Nunca se esqueça de se valorizar, de reconhecer suas vitórias. Eu tenho tanto orgulho de você que às vezes nem cabe em mim. Você é incrível, e eu tenho sorte de estar do seu lado.</p>
+    </div>
+    <!-- 18 -->
+    <div>
+      <h2> Leia quando você estiver confusa</h2>
+      <p>Amor, tudo bem não ter todas as respostas agora. A vida é assim mesmo, cheia de incertezas. Mas não precisa carregar tudo sozinha. Eu tô aqui pra dividir os pesos, pra ajudar a encontrar caminhos. Confia em mim: juntos, a gente sempre acha uma saída.</p>
+    </div>
+    <!-- 19 -->
+    <div>
+      <h2>. Leia quando você sentir que não tem forças</h2>
+      <p>Amor, você é mais forte do que imagina, mas eu sei que nem sempre dá pra ser forte. Então, quando faltar forças, deixa eu ser o seu descanso. Deita no meu peito, entrega um pouco desse peso pra mim. Você nunca vai precisar lutar sozinha.</p>
+    </div>
+    <!-- 20 -->
+    <div>
+      <h2> Leia quando você sentir vontade de desistir</h2>
+      <p>Amor, eu sei que às vezes a vida pesa tanto que a gente só quer largar tudo. Mas olha pra mim: você não tá sozinha. O mundo precisa da sua luz, e eu preciso de você. Não desista, por favor. Eu vou estar aqui sempre, mesmo nos dias mais escuros, lembrando você do quanto é amada.</p>
+    </div>
+    <!-- 21 -->
+    <div>
+      <h2> Leia quando você se sentir perdida</h2>
+      <p>Amor, às vezes a vida nos faz andar em círculos, e a gente não sabe pra onde ir. Mas lembra: eu tô aqui, e juntos a gente encontra o caminho. Não precisa ter todas as respostas agora. Cada passo seu é importante, e eu vou estar do seu lado, segurando sua mão, até que a direção fique clara.</p>
+    </div>
+    <!-- 22 -->
+    <div>
+      <h2> Leia quando você sentir que ninguém te valoriza</h2>
+      <p>Meu bem, você é um tesouro que não cabe em palavras. Mesmo que o mundo às vezes não enxergue o seu valor, eu vejo. Eu admiro cada detalhe seu, cada gesto, cada jeito que só você tem. Nunca duvide da sua importância, porque pra mim você é tudo.</p>
+    </div>
+    <!-- 23 -->
+    <div>
+      <h2> Leia quando você estiver com medo do futuro</h2>
+      <p>Amor, eu sei que o futuro pode assustar. Ele é incerto, e às vezes a gente se perde em pensamentos. Mas lembra: não importa o que venha, nós vamos enfrentar juntos. Eu vou estar ao seu lado em cada passo, segurando sua mão, e prometo que vamos transformar qualquer medo em coragem.</p>
+    </div>
+    <!-- 24 -->
+    <div>
+      <h2> Leia quando você estiver sem motivação</h2>
+      <p>Meu amor, eu sei que tem dias em que levantar da cama parece impossível. Mas lembra: você não precisa fazer tudo de uma vez. Cada pequena ação já é uma vitória. E eu tô aqui pra te incentivar, te apoiar e te lembrar do quanto você é incrível, mesmo nos dias mais difíceis.</p>
+    </div>
+    <!-- 25 -->
+    <div>
+      <h2>Leia quando você sentir saudade da nossa rotina</h2>
+      <p>Amor, sei que às vezes a rotina se distancia, que sentimos falta dos nossos pequenos momentos. Mas lembra: cada memória nossa é viva dentro de mim, e cada pensamento em você aquece meu coração. Logo vamos criar novas lembranças, mas enquanto isso, segura minhas lembranças e meu amor.</p>
+    </div>
+    <!-- 26 -->
+    <div>
+      <h2> Leia quando você estiver se sentindo vulnerável</h2>
+      <p>Amor, ser vulnerável não é fraqueza, é coragem. Eu quero que você se sinta à vontade pra ser quem você é, sem máscaras. Eu tô aqui pra acolher cada pedaço seu, pra segurar você quando estiver frágil e te lembrar de que, mesmo nos momentos mais delicados, você é minha fortaleza.</p>
+    </div>
+    <!-- 27 -->
+    <div>
+      <h2> Leia quando você sentir que precisa de um abraço</h2>
+      <p>Feche os olhos, amor. Imagina eu te envolvendo em um abraço apertado, aquele que faz o mundo parecer menor. Respira, sente meu coração batendo junto com o seu. Eu tô aqui, e sempre vou estar, pra te abraçar, proteger e aquecer sua alma.</p>
+    </div>
+    <!-- 28 -->
+    <div>
+      <h2> Leia quando você estiver feliz comigo</h2>
+      <p>Ver você feliz é como sentir o sol dentro do peito. Eu quero que cada risada sua seja minha trilha sonora, cada sorriso seja meu combustível. Eu amo quando você se sente bem comigo, porque a sua felicidade é a minha maior recompensa.</p>
+    </div>
+    <!-- 29 -->
+    <div>
+      <h2> Leia quando você sentir ciúmes</h2>
+      <p>Amor, eu sei que o ciúmes às vezes aparece, mas lembra: você é única pra mim. Não existe ninguém que possa substituir você, nem um instante que diminua o que sinto. Quando o ciúmes vier, respira fundo, lembra do nosso amor e do quanto você é essencial na minha vida.</p>
+    </div>
+    <!-- 30 -->
+    <div>
+      <h2>Leia quando você estiver orgulhosa de mim</h2>
+      <p>Meu bem, saber que você se orgulha de mim me enche de força e alegria. Cada gesto seu, cada palavra de apoio, cada sorriso meu quando lembro de você me faz querer ser melhor todos os dias. Obrigado por estar comigo, por acreditar e amar.</p>
+    </div>
+    <!-- 31 -->
+    <div>
+      <h2> Leia quando você sentir que não é suficiente pra mim</h2>
+      <p>Amor, você não precisa ser perfeita, não precisa mudar nada. Você é suficiente, você é tudo que eu sempre quis. Eu te escolho todos os dias, do jeitinho que você é, com todos os seus sonhos, medos e jeitos únicos. Você já é mais do que suficiente.</p>
+    </div>
+    <div>
+        <!-- 32 -->
+      <h2>. Leia quando você duvidar da sua beleza</h2>
+      <p>Meu bem, você é a definição de beleza pra mim. Não importa o espelho, não importa a opinião dos outros: pra mim, cada detalhe seu é poesia viva. Você não precisa mudar nada, porque já é perfeita do jeito que é.
+  </div>
+    <div>
+        <!-- 33 -->
+      <h2> Leia quando você sentir que não tem forças</h2>
+      <p>Amor, eu sei que existem dias em que tudo pesa demais. Mas respira. Deixa eu ser sua força quando a sua faltar. Apoia-se em mim, segura minha mão. Nós dois juntos somos mais fortes do que qualquer dificuldade.
+  </div>
+  <div>
+        <!-- 34-->
+      <h2>Leia quando você sentir que não merece amor</h2>
+      <p>Meu amor, você merece todo o amor do mundo, e o meu é inteiro seu. Não existe motivo pra duvidar disso. Você merece ser amada, cuidada, admirada, e eu tô aqui pra te lembrar disso sempre.
+  </div>
+  <div>
+        <!-- 35 -->
+      <h2>Leia quando você sentir que não tem voz</h2>
+      <p>Amor, sua voz importa. Seus pensamentos, seus sentimentos, suas opiniões — tudo isso é precioso. Eu quero te ouvir, quero te entender, quero ser o lugar onde você sempre pode falar sem medo.
+  </div>
+  <div>
+        <!-- 36 -->
+      <h2> Leia quando você estiver com saudade do meu toque</h2>
+      <p>Fecha os olhos, amor. Imagina minha mão na sua, minha pele encostando na sua, meu carinho te envolvendo. Mesmo longe, eu penso em você e desejo poder te tocar com todo o cuidado e amor que só você me inspira.
+  </div>
+  <div>
+        <!-- 37 -->
+      <h2>Leia quando você duvidar do seu valor</h2>
+      <p>Meu bem, você vale mais do que mil universos. Nenhum erro, nenhuma falha, nenhum olhar de fora pode diminuir isso. Seu valor é imenso, e eu sou grato todos os dias por ter você na minha vida.
+   <div>
+    
+     
+  <script src="script.js"></script>
+</body>
+</html>
